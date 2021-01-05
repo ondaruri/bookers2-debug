@@ -5,6 +5,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @newbook = Book.new
+    @post_comment = PostComment.new
   end
 
   def index
@@ -53,6 +54,10 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :body)
+#     ⑱の修正により、エラーメッセージでBody can't be blankが出てくるようになりました。
+# つまり、bodyの情報が送れていないor保存できないことが考えられます。
+# booksコントローラのストロングパラメータbook_paramsを確認すると、titleのみが許可されている状態です。
+# ストロングパラメータは、データベースに保存してもいいものを許可するメソッドですので、bodyを追記してあげる必要があります。
   end
 
 end
