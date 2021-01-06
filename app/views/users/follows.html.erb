@@ -1,0 +1,29 @@
+<h2>FollowsrUsers</h2>
+  <% if @users.blank? %>
+  <p>ユーザーはいません</p>
+  <% else %>
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>imege</th>
+          <th>name</th>
+          <th></th>
+          <th></th>
+          <th>show</th>
+          <th colspan="5"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.following_user.each do |follows| %>
+        <tr>
+          <td><%= attachment_image_tag(follows, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+          <td><%= follows.name %></td>
+          <td>フォロー数　<%= @user.follower.count %></td>
+          <td>フォロワー数 <%= @user.follower.count %></td>
+          <td><%= link_to 'show', user_path(@user) %></td>
+          <% end %>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+

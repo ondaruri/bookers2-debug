@@ -39,7 +39,7 @@
       <%= image_tag('no-image-icon.jpeg') %>
       <%= post_comment.comment %>
       <% if post_comment.user == current_user %>
-        <%= link_to "Delete", book_post_comment_path(post_comment), method: :delete %>
+        <%= link_to "Delete", book_post_comment_path(post_comment), class: "btn btn-sm btn-danger", method: :delete %>
         <% end %>
       <p><%= link_to post_comment.user.name, user_path(post_comment.user_id) %></p>
       <% end %>
