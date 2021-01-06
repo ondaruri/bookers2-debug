@@ -34,6 +34,16 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+
+    def follows
+      @user = User.find(params[:id])
+      @users = @user.follower
+    end
+
+    def follower
+      @user = User.find(params[:id])
+    end
+
 # redirect_to users_path(@user), notice: "You have updated user successfully."
 # users.1は余分に引数を渡しているときにこのように表示されます。
 # users_pathはindexページですのでid(引数)は不要ですが、(@user)が渡されてしまっています。
