@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   get 'home/about' => 'homes#about'
+  post 'follow/:id' => 'rerationships#follow', as: 'follow' #フォローする
+  post 'unfollow/:id' => 'rerationships#unfollow', as: 'unfollow' #フォロー外す
+
 #   Railsのルーティングは、ルーティングファイルの上からの記載順に読み込まれていきます。
 # 現在、resources :users,only: [:show,:index,:edit,:update]が上にあるため、
 # GET '/users/:id' => 'users#show'
