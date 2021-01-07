@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post 'follow/:id' => 'relationships#follow', as: 'follow' #フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' #フォロー外す
 
-  get '/serch' => 'serch#serch'
+  get '/search' => 'search#search'
 
 #   Railsのルーティングは、ルーティングファイルの上からの記載順に読み込まれていきます。
 # 現在、resources :users,only: [:show,:index,:edit,:update]が上にあるため、

@@ -1,9 +1,9 @@
-class SerchController < ApplicationController
-  def serch
-    @model = params["serch"]["model"] #選択したmodelを@modelに代入
-    @value = params["serch"]["value"] #検索にかけた文字列(ここではvalue)を@valueに代入
-    @how = params["serch"]["how"] #選択した検索方法howを@howに代入
-    @datas = serch_for(@how,@model,@value) #search_forの引数にインスタンス変数を定義
+class SearchController < ApplicationController
+  def search
+    @model = params["search"]["model"] #選択したmodelを@modelに代入
+    @value = params["search"]["value"] #検索にかけた文字列(ここではvalue)を@valueに代入
+    @how = params["search"]["how"] #選択した検索方法howを@howに代入
+    @datas = search_for(@how,@model,@value) #search_forの引数にインスタンス変数を定義
   end                                      #@datasに最終的な検索結果が入ります
 
   private
@@ -40,7 +40,7 @@ class SerchController < ApplicationController
     end
   end
 
-  def serch_for(how,model,value) #searchアクションで定義した情報が引数に入っている
+  def search_for(how,model,value) #searchアクションで定義した情報が引数に入っている
     case how
     when 'match'
       match(model, value) #検索方法の引数に(model, value)を定義している
