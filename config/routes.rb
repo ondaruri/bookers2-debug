@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'serch/serch'
   devise_for :users
   root to: 'homes#top'
   resources :users,only: [:show,:index,:edit,:update] do
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   post 'follow/:id' => 'relationships#follow', as: 'follow' #フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' #フォロー外す
+
+  get '/serch' => 'serch#serch'
 
 #   Railsのルーティングは、ルーティングファイルの上からの記載順に読み込まれていきます。
 # 現在、resources :users,only: [:show,:index,:edit,:update]が上にあるため、
