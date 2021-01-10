@@ -1,0 +1,3 @@
+$('.comment_count<%= @book.id %>').html("コメント数:<%= @book.post_comments.count %>");
+$('.comment_index<%= @book.id %>').html("<%= j(render partial: 'post_comments/comment_index', locals: {book: @book}) %>");
+$('#post_comment_comment').val("");
