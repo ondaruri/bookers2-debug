@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include JpPrefecture                #都道府県コードから都道府県名に自動変換
+  jp_prefecture :prefecture_code
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -32,4 +35,15 @@ class User < ApplicationRecord
   validates :name, length: { in: 2..20 }, uniqueness: true
   validates :name, presence: true
   validates :introduction, length: {maximum: 50 }
+
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+
 end
