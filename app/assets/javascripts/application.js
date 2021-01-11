@@ -11,9 +11,25 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+/*global $ */
+$(function () {
+  $(document).on('turbolinks:load', () => {
+    $('#user_postcode').jpostal({
+      postcode: [
+        '#user_postcode'
+      ],
+      address: {
+        "#user_prefecture_code": "%3",
+        "#user_address_city": "%4%5",
+        "#user_address_street": "%6%7"
+      }
+    });
+  });
+});
