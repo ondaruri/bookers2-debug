@@ -45,5 +45,11 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  after_create :send_welcome_mail
+
+  def send_welcome_mail
+    UserNoticeMailer.send_signup_email(self).deliver
+  end
+
 
 end
